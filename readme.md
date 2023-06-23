@@ -12,7 +12,8 @@ sudo cp frp_0.49.0_linux_amd64/frps /usr/local/frp/
 ```
 
 ### Server
-- Inspect `frps.ini`
+- Modify `frps.ini`
+  - YOUR_SECRET_STRING: password, any string
 ```bash
 sudo cp frps.ini /usr/local/frp/
 sudo cp frps.service /etc/systemd/system/frps.service
