@@ -30,47 +30,28 @@ sudo useradd -m -p $(openssl passwd -1 "USER_PASSWORD") -s /bin/zsh USERNAME
 sudo usermod -aG sudo USERNAME
 ```
 
-### Setup git
+### frp server
 ```bash
-# git config --list
-git config --global credential.helper store
-git config --global user.email "example@gmail.com"
-git config --global user.name "example"
+sudo systemctl stop frps
+wget https://github.com/fatedier/frp/releases/download/v0.52.3/frp_0.52.3_linux_amd64.tar.gz
+tar xvf frp_0.52.3_linux_amd64.tar.gz
+sudo cp frp_0.52.3_linux_amd64/frps /usr/local/frp/frps
+rm frp_0.52.3_linux_amd64.tar.gz
+
+sudo nano /etc/systemd/system/frps.service
+sudo systemctl daemon-reload && sudo systemctl enable frps && sudo systemctl start frps && sudo service frps restart
+sudo systemctl status frps
 ```
 
-### GPU monitor
+### frp client
 ```bash
-pip install gpustat
-gpustat -cupP -i
-sudo nvidia-smi -pl 125  # Set power limit
-```
+sudo systemctl stop frpc
+wget https://github.com/fatedier/frp/releases/download/v0.52.3/frp_0.52.3_linux_amd64.tar.gz
+tar xvf frp_0.52.3_linux_amd64.tar.gz
+sudo cp frp_0.52.3_linux_amd64/frpc /usr/local/frp/frpc
+rm frp_0.52.3_linux_amd64.tar.gz
 
-### Nvidia GPU fan control 
-```bash
-sudo nvidia-xconfig -a --cool-bits=28 # then reboot
-sudo nvidia-settings -a '[gpu:0]/GPUFanControlState=1' 
-sudo nvidia-settings -a '[fan:0]/GPUTargetFanSpeed=50' -a '[fan:1]/GPUTargetFanSpeed=50'
-```
-
-### Disks
-```bash
-lsblk
-ls -lha /dev/disk/by-uuid
-sudo nano /etc/fstab
-# /dev/disk/by-uuid/XXXXXXXX /media/XXXXXXXXX auto nosuid,nodev,nofail,x-gvfs-show 0 0
-sudo mount -a
-```
-
-### Samba
-```bash
-sudo apt install sambd
-sudo nano /etc/samba/smb.conf
-# [Data]
-#     path = /media/XXXX
-#     browseable = yes
-#     writable = yes
-#     create mode = 0644
-#     directory mode = 0744
-#     user = USERNAME
-sudo service smbd restart
+sudo nano /etc/systemd/system/frpc.service
+sudo systemctl daemon-reload && sudo systemctl enable frpc && sudo systemctl start frpc && sudo service frpc restart
+sudo systemctl status frpc
 ```
