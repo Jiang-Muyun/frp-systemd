@@ -35,7 +35,7 @@ sudo usermod -aG sudo USERNAME
 sudo systemctl stop frps
 wget https://github.com/fatedier/frp/releases/download/v0.52.3/frp_0.52.3_linux_amd64.tar.gz
 tar xvf frp_0.52.3_linux_amd64.tar.gz
-sudo cp frp_0.52.3_linux_amd64/frps /usr/local/frp/frps
+sudo cp frp_0.52.3_linux_amd64/frps /usr/bin/frps
 rm frp_0.52.3_linux_amd64.tar.gz
 
 sudo nano /etc/systemd/system/frps.service
@@ -48,7 +48,7 @@ sudo systemctl status frps
 sudo systemctl stop frpc
 wget https://github.com/fatedier/frp/releases/download/v0.52.3/frp_0.52.3_linux_amd64.tar.gz
 tar xvf frp_0.52.3_linux_amd64.tar.gz
-sudo cp frp_0.52.3_linux_amd64/frpc /usr/local/frp/frpc
+sudo cp frp_0.52.3_linux_amd64/frpc /usr/bin/frpc
 rm frp_0.52.3_linux_amd64.tar.gz
 
 sudo nano /etc/systemd/system/frpc.service
