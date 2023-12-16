@@ -3,9 +3,12 @@
 ```bash
 sudo apt update
 sudo apt upgrade
-sudo apt install htop git zsh openssh-server vim tmux 
+sudo apt install htop git zsh openssh-server vim tmux progress curl
 sudo apt install smartmontools nvme-cli zfsutils-linux
 ```
+
+type $env:USERPROFILE\.ssh\id_rsa.pub | ssh -P1234 IP "cat >> .ssh/authorized_keys"
+
 ### oh-my-zsh and plugins
 ```bash
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
