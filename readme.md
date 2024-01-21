@@ -1,14 +1,10 @@
 ### Quick start for frp
 
-### Download frp
+### Install frp
 - from https://github.com/fatedier/frp/releases
 ```bash
-wget https://github.com/fatedier/frp/releases/download/v0.49.0/frp_0.49.0_linux_amd64.tar.gz
-tar -xvzf frp_0.49.0_linux_amd64.tar.gz
-rm frp_0.49.0_linux_amd64.tar.gz
-sudo mkdir /usr/local/frp
-sudo cp frp_0.49.0_linux_amd64/frpc /usr/local/frp/
-sudo cp frp_0.49.0_linux_amd64/frps /usr/local/frp/
+sudo cp frp_0.49.0_linux_amd64/frpc /usr/bin/
+sudo cp frp_0.49.0_linux_amd64/frps /usr/bin/
 ```
 
 ### Server
